@@ -1,0 +1,23 @@
+{
+  "name": "todoro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run tauri:dev",
+    "start": "craco start",
+    "build": "craco build",
+    "tauri": "tauri",
+    "tauri:init": "npm run tauri init",
+    "tauri:info": "npm run tauri info",
+    "tauri:dev": "npm run tauri dev",
+    "tauri:prod": "npm run tauri",
+    "tauri:build": "npm run tauri build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tauri": "^0.11.1"
+  }
+}
