@@ -7,10 +7,12 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className='h-screen w-screen p-10 text-base antialiased font-inter font-normal tracking-normal leading-normal normal-case text-gray-900 bg-color-100'>
+    <div className='min-h-screen w-screen h-screen text-base antialiased font-inter font-normal tracking-normal leading-normal normal-case text-gray-900 bg-color-100'>
       <Navbar />
 
-      {children}
+      <main className='flex-grow flex flex-col justify-center items-center py-6 px-8'>
+        {children}
+      </main>
     </div>
   )
 }

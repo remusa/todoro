@@ -1,38 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 interface Props {}
 
 const Navbar: React.FC<Props> = () => {
-  return (
-    <header>
-      <nav>
-        <ul className='flex flex-col list-none justify-center align-center'>
-          <li>
-            <NavLink
-              exact
-              to='/'
-              activeStyle={{
-                fontWeight: 'bold',
-                color: 'red',
-              }}
-            >
-              Home
-            </NavLink>
-          </li>
+  const [isOpen, setIsOpen] = useState(false)
 
-          <li>
-            <NavLink
-              to='/profile'
-              activeStyle={{
-                fontWeight: 'bold',
-                color: 'red',
-              }}
-            >
-              Profile
-            </NavLink>
-          </li>
-        </ul>
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+  }
+
+  return (
+    <header className='flex items-center justify-between py-6 px-3 bg-gray-900'>
+      <div className=''>
+        <NavLink
+          exact
+          to='/'
+          className='block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-teal-500'
+          activeStyle={{
+            color: 'red',
+          }}
+        >
+          Home
+        </NavLink>
+      </div>
+
+      <nav className='flex items-center justify-between '>
+        <NavLink
+          exact
+          to='/profile'
+          className='block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-teal-500 sm:mt-0 sm:ml-2'
+          activeStyle={{
+            color: 'red',
+          }}
+        >
+          Profile
+        </NavLink>
+
+        <NavLink
+          exact
+          to='/profile'
+          className='block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-teal-500 sm:mt-0 sm:ml-2'
+          activeStyle={{
+            color: 'red',
+          }}
+        >
+          Settings
+        </NavLink>
       </nav>
     </header>
   )
