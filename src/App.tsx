@@ -1,9 +1,10 @@
-import * as React from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, RouteProps, Switch } from 'react-router-dom'
 import Home from '~components/Home'
 import Layout from '~components/Layout'
-import PageError from '~components/PageError'
-import Profile from '~components/Profile'
+import Home from '~screens/Home'
+import PageError from '~screens/PageError'
+import Profile from '~screens/Profile'
 
 const AppRoute = (props: RouteProps) => (
   <Route {...props}>
@@ -11,7 +12,7 @@ const AppRoute = (props: RouteProps) => (
   </Route>
 )
 
-export default () => {
+export function App() {
   return (
     <Router>
       <Switch>
@@ -23,9 +24,9 @@ export default () => {
           <Profile />
         </AppRoute>
 
-        <Route path='*'>
+        <AppRoute path='*'>
           <PageError>Page not found.</PageError>
-        </Route>
+        </AppRoute>
       </Switch>
     </Router>
   )

@@ -1,14 +1,13 @@
 import React from 'react'
-import Layout from './Layout'
 
 interface Props {
   children: React.ReactNode
 }
 
 const PageError = ({ children }: Props) => (
-  <Layout>
+  <div>
     <div>{children}</div>
-  </Layout>
+  </div>
 )
 
 export default PageError
