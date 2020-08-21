@@ -11,12 +11,12 @@ const Navbar: React.FC<Props> = () => {
   }
 
   return (
-    <header className='flex items-center justify-between py-6 px-3 bg-gray-900'>
+    <header className='flex items-center justify-between py-6 px-3 border-b-2 border-blue-500'>
       <div className=''>
         <NavLink
           exact
           to='/'
-          className='block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-teal-500'
+          className='block px-2 py-1 text-gray-100 font-semibold rounded hover:bg-teal-500'
           activeStyle={{
             color: 'red',
           }}
@@ -29,23 +29,12 @@ const Navbar: React.FC<Props> = () => {
         <NavLink
           exact
           to='/profile'
-          className='block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-teal-500 sm:mt-0 sm:ml-2'
+          className='block px-2 py-1 text-gray-100 font-semibold rounded hover:bg-teal-500 sm:mt-0 sm:ml-2'
           activeStyle={{
             color: 'red',
           }}
         >
           Profile
-        </NavLink>
-
-        <NavLink
-          exact
-          to='/profile'
-          className='block px-2 py-1 text-gray-800 font-semibold rounded hover:bg-teal-500 sm:mt-0 sm:ml-2'
-          activeStyle={{
-            color: 'red',
-          }}
-        >
-          Settings
         </NavLink>
       </nav>
     </header>
