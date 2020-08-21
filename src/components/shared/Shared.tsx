@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react'
+import React, { MouseEvent, RefObject } from 'react'
 
 export const NewItemFormContainer = ({ children }: React.PropsWithChildren<{}>) => {
   return <div className='w-full max-w-6xl flex flex-col items-start'>{children}</div>
@@ -21,11 +21,17 @@ export const NewItemButton = ({
 export const NewItemInput = ({
   value,
   onChange,
-}: React.PropsWithChildren<{ value: string; onChange(e: any): void }>) => {
+  inputRef,
+}: React.PropsWithChildren<{
+  value: string
+  onChange(e: any): void
+  inputRef: RefObject<HTMLInputElement>
+}>) => {
   return (
     <input
       className='w-full mb-2 py-2 px-4 border-0 rounded shadow-md'
       type='text'
+      ref={inputRef}
       value={value}
       onChange={onChange}
     />
