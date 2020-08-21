@@ -13,7 +13,9 @@
     "jsx": "react",
     "baseUrl": "./src",
     "paths": {
-      "~*": ["./*"]
+      "~*": ["./*"],
+      "@components": ["./src/components"],
+      "@screens": ["./src/screens"]
     }
   },
   "include": ["src/**/*"]

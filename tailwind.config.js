@@ -1,8 +1,10 @@
+const isProd = process.env.ENV === 'production'
+
 module.exports = {
   purge: {
-    enabled: true,
-    // mode: 'all',
-    content: ['./src/**/*'],
+    enabled: isProd ? true : false,
+    mode: 'all',
+    content: ['./src/**/*.tsx'],
   },
   theme: {
     interFontFeatures: {
@@ -13,7 +15,13 @@ module.exports = {
       display: ['Inter', 'sans-serif'],
       body: ['Inter', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '72': '18rem',
+        '84': '21rem',
+        '96': '24rem',
+      },
+    },
   },
   variants: {},
   plugins: [
