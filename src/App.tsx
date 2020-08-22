@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, RouteProps, Switch } from 'react-router
 import AddNewItem from '~components/AddNewItem'
 import Column from '~components/Column'
 import Layout from '~components/Layout'
+import { CustomDragLayer } from '~components/shared/CustomDragLayer'
 import { useAppState } from '~context/AppState'
 import Home from '~screens/Home'
 import PageError from '~screens/PageError'
@@ -13,6 +14,8 @@ export default () => {
 
   return (
     <Layout>
+      <CustomDragLayer />
+
       {state.lists.map((list, i) => (
         <Column id={list.id} text={list.text} key={list.id} index={i} />
       ))}
