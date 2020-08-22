@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useFocus } from '~utils/useFocus'
-import { NewItemButton, NewItemFormContainer, NewItemInput } from './shared/Shared'
+import { NewItemInput } from './shared/NewItemInput'
+import { NewItemFormContainer } from './shared/NewItemFormContainer'
+import { NewItemButton } from './shared/NewItemButton'
 
 interface NewItemFormProps {
   onAdd(text: string): void

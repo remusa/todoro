@@ -1,10 +1,15 @@
+import styled from '@emotion/styled'
 import React, { useRef } from 'react'
 import { useDrop } from 'react-dnd'
 import { useAppState } from '~context/AppState'
 import { DragItem } from '~utils/dragItem'
+import { isHidden } from '~utils/isHidden'
 import { useItemDrag } from '~utils/useItemDrag'
 import AddNewItem from './AddNewItem'
 import Card from './Card'
+import { DragPreviewContainer } from './shared/DragPreviewContainer'
+
+const ColumnContainer = styled(DragPreviewContainer)``
 
 interface ColumnProps {
   text: string
@@ -36,7 +41,11 @@ const Column = ({ text, index, id }: ColumnProps) => {
   drag(drop(ref))
 
   return (
-    <div ref={ref} className='flex-grow-0 w-64 w-72 mr-6 p-2 bg-gray-300 rounded shadow'>
+    <ColumnContainer
+      ref={ref}
+      className='flex-grow-0 w-72 min-h-96 mr-6 p-2 bg-gray-300 rounded shadow-md'
+      isHidden={isHidden(state.draggedItem, 'COLUMN', id)}
+    >
       <h1 className='pt-1 pb-2 px-4 font-bold'>{text}</h1>
 
       {state.lists[index].tasks.map((task, i) => (
@@ -48,7 +57,7 @@ const Column = ({ text, index, id }: ColumnProps) => {
         onAdd={text => dispatch({ type: 'ADD_TASK', payload: { text, taskId: id } })}
         dark
       />
-    </div>
+    </ColumnContainer>
   )
 }
 

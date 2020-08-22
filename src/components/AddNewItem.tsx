@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import NewItemForm from './NewItemForm'
-import { AddItemButton } from './shared/Shared'
+import { AddItemButton } from './shared/AddItemButton'
 
 interface AddNewItemProps {
   onAdd(text: string): void
   toggleButtonText: string
-  dark?: boolean
+  dark?: boolean | undefined
 }
 
 const AddNewItem = (props: React.PropsWithChildren<AddNewItemProps>) => {
@@ -23,7 +23,7 @@ const AddNewItem = (props: React.PropsWithChildren<AddNewItemProps>) => {
     )
   }
 
-  return <AddItemButton onClick={() => setShowForm(true)} value={toggleButtonText} dark />
+  return <AddItemButton onClick={() => setShowForm(true)} value={toggleButtonText} dark={dark} />
 }
 
 export default AddNewItem
