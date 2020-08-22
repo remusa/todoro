@@ -41,18 +41,22 @@ export const NewItemInput = ({
 interface AddItemButtonProps {
   dark?: boolean
   onClick(e: MouseEvent): void
+  value: string
 }
 
 export const AddItemButton = ({
   dark = false,
   onClick,
+  value,
 }: React.PropsWithChildren<AddItemButtonProps>) => {
-  const isDark = dark ? 'text-gray-900' : 'text-gray-100'
+  const isDark = dark ? 'text-white bg-opacity-50' : ''
 
   return (
     <button
       onClick={onClick}
-      className={`py-3 px-4 text-gray-100 ${isDark} border-0 cursor-pointer rounded-md hover:bg-gray-400 transition-colors duration-100 ease-in`}
-    ></button>
+      className={`py-3 px-4 text-gray-900 bg-gray-300 ${isDark} border-0 cursor-pointer rounded-md hover:bg-gray-400 transition-colors duration-100 ease-in`}
+    >
+      {value}
+    </button>
   )
 }
