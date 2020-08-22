@@ -8,40 +8,19 @@ import Home from '~screens/Home'
 import PageError from '~screens/PageError'
 import Profile from '~screens/Profile'
 
-interface State {
-  count: number
-}
-
-type Action =
-  | {
-      type: 'INCREMENT'
-    }
-  | {
-      type: 'DECREMENT'
-    }
-
-const counterReducer = (state: State, action: Action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { count: state.count + 1 }
-    case 'DECREMENT':
-      return { count: state.count - 1 }
-    default:
-      throw new Error()
-  }
-}
-
 export default () => {
-  // const [state, dispatch] = useReducer(counterReducer, { count: 0 })
-  const { state } = useAppState()
+  const { state, dispatch } = useAppState()
 
   return (
     <Layout>
       {state.lists.map((list, i) => (
-        <Column key={list.id} text={list.text} index={i} />
+        <Column id={list.id} text={list.text} key={list.id} index={i} />
       ))}
 
-      <AddNewItem toggleButtonText='+ Add another list' onAdd={console.log} />
+      <AddNewItem
+        toggleButtonText='+ Add another list'
+        onAdd={text => dispatch({ type: 'ADD_LIST', payload: text })}
+      />
     </Layout>
   )
 }
