@@ -9,15 +9,24 @@ import AddNewItem from './AddNewItem'
 import Card from './Card'
 import { DragPreviewContainer } from './shared/DragPreviewContainer'
 
-const ColumnContainer = styled(DragPreviewContainer)``
+const ColumnContainer = styled(DragPreviewContainer)`
+  background-color: #ebecf0;
+  width: 300px;
+  min-height: 40px;
+  margin-right: 20px;
+  border-radius: 3px;
+  padding: 8px 8px;
+  flex-grow: 0;
+`
 
 interface ColumnProps {
   text: string
   index: number
   id: string
+  isPreview?: boolean
 }
 
-const Column = ({ text, index, id }: ColumnProps) => {
+const Column = ({ text, index, id, isPreview }: ColumnProps) => {
   const { state, dispatch } = useAppState()
   const ref = useRef<HTMLDivElement>(null)
 
@@ -42,9 +51,10 @@ const Column = ({ text, index, id }: ColumnProps) => {
 
   return (
     <ColumnContainer
+      isPreview={isPreview}
       ref={ref}
+      isHidden={isHidden(isPreview, state.draggedItem, 'COLUMN', id)}
       className='flex-grow-0 w-72 min-h-96 mr-6 p-2 bg-gray-300 rounded shadow-md'
-      isHidden={isHidden(state.draggedItem, 'COLUMN', id)}
     >
       <h1 className='pt-1 pb-2 px-4 font-bold'>{text}</h1>
 
