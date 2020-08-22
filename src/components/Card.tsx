@@ -49,14 +49,14 @@ const Card = ({ text, index, id, columnId, isPreview }: CardProps) => {
 
   drag(drop(ref))
 
-  const preview = isPreview ? 'w-72' : 'w-full'
+  const previewStyles = isPreview ? 'w-72' : 'w-full'
 
   return (
     <CardContainer
       ref={ref}
       isHidden={isHidden(isPreview, state.draggedItem, 'CARD', id)}
       isPreview={isPreview}
-      className={`${preview} mb-2 py-2 px-4 bg-gray-100 rounded-md shadow-md cursor-pointer`}
+      className={`${previewStyles} mb-2 py-2 px-4 bg-gray-100 rounded-md shadow-md cursor-pointer`}
     >
       {text}
     </CardContainer>

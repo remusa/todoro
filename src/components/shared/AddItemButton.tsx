@@ -11,7 +11,7 @@ export const AddItemButton = ({
   onClick,
   value,
 }: React.PropsWithChildren<AddItemButtonProps>) => {
-  const isDark = dark ? 'w-full text-gray-900' : 'w-72 text-gray-100 bg-opacity-50'
+  const isDark = dark ? 'w-full text-gray-900 text-gray-100 ' : 'w-72 bg-opacity-50'
 
   return (
     <button
