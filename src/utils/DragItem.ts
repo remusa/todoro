@@ -1,8 +1,16 @@
 export type ColumnDragItem = {
-  index: number
-  id: string
-  text: string
   type: 'COLUMN'
+  id: string
+  index: number
+  text: string
 }
 
-export type DragItem = ColumnDragItem
+export type CardDragItem = {
+  type: 'CARD'
+  id: string
+  index: number
+  text: string
+  columnId: string
+}
+
+export type DragItem = ColumnDragItem | CardDragItem

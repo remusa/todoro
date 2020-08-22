@@ -78,6 +78,15 @@ type Action =
       type: 'SET_DRAGGED_ITEM'
       payload: DragItem | undefined
     }
+  | {
+      type: 'MOVE_TASK'
+      payload: {
+        dragIndex: number
+        hoverIndex: number
+        sourceColumn: string
+        targetColumn: string
+      }
+    }
 
 const appStateReducer = (state: AppState, action: Action) => {
   switch (action.type) {
@@ -109,6 +118,18 @@ const appStateReducer = (state: AppState, action: Action) => {
 
     case 'SET_DRAGGED_ITEM': {
       return { ...state, draggedItem: action.payload }
+    }
+
+    case 'MOVE_TASK': {
+      const { dragIndex, hoverIndex, sourceColumn, targetColumn } = action.payload
+
+      const sourceLaneIndex = findItemIndexById(state.lists, sourceColumn)
+      const targetLaneIndex = findItemIndexById(state.lists, targetColumn)
+
+      const item = state.lists[sourceLaneIndex].tasks.splice(dragIndex, 1)[0] // Remove card from source column
+      state.lists[targetLaneIndex].tasks.splice(hoverIndex, 0, item) // Add card to target column
+
+      return { ...state }
     }
 
     default: {

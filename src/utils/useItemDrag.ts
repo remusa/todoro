@@ -6,6 +6,7 @@ import { DragItem } from './DragItem'
 
 export const useItemDrag = (item: DragItem) => {
   const { dispatch } = useAppState()
+
   const [, drag, preview] = useDrag({
     item,
     begin: () =>

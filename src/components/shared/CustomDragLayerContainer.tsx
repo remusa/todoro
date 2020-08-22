@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 
+// TODO: remove unused comment
 // export const CustomDragLayerContainer = styled.div`
 //   height: 100%;
 //   left: 0;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, RouteProps, Switch } from 'react-router-dom'
-import AddNewItem from '~components/AddNewItem'
+import AddNewItem from '~components/shared/AddNewItem'
 import Column from '~components/Column'
 import Layout from '~components/Layout'
 import { CustomDragLayer } from '~components/shared/CustomDragLayer'
