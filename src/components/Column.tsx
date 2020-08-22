@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useAppState } from '~context/AppState'
+import { useItemDrag } from '~utils/useItemDrag'
 import AddNewItem from './AddNewItem'
 import Card from './Card'
 
@@ -11,9 +12,14 @@ interface ColumnProps {
 
 const Column = ({ text, index, id }: ColumnProps) => {
   const { state, dispatch } = useAppState()
+  const ref = useRef<HTMLDivElement>(null)
+
+  const { drag } = useItemDrag({ type: 'COLUMN', id, index, text })
+
+  drag(ref)
 
   return (
-    <div className='flex-grow-0 w-64 w-96 mr-6 p-2 bg-gray-300 rounded shadow'>
+    <div ref={ref} className='flex-grow-0 w-64 w-96 mr-6 p-2 bg-gray-300 rounded shadow'>
       <h1 className='pt-2 pb-3 px-4 font-bold'>{text}</h1>
 
       {state.lists[index].tasks.map((task, i) => (
