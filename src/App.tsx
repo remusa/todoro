@@ -1,27 +1,45 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, RouteProps, Switch } from 'react-router-dom'
 import AddNewItem from '~components/AddNewItem'
-import Card from '~components/Card'
 import Column from '~components/Column'
 import Layout from '~components/Layout'
+import { useAppState } from '~context/AppState'
 import Home from '~screens/Home'
 import PageError from '~screens/PageError'
 import Profile from '~screens/Profile'
 
+interface State {
+  count: number
+}
+
+type Action =
+  | {
+      type: 'INCREMENT'
+    }
+  | {
+      type: 'DECREMENT'
+    }
+
+const counterReducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 }
+    case 'DECREMENT':
+      return { count: state.count - 1 }
+    default:
+      throw new Error()
+  }
+}
+
 export default () => {
+  // const [state, dispatch] = useReducer(counterReducer, { count: 0 })
+  const { state } = useAppState()
+
   return (
     <Layout>
-      <Column text='To Do'>
-        <Card text='Generate app scaffold' />
-      </Column>
-
-      <Column text='In Progress'>
-        <Card text='Learn TypeScript' />
-      </Column>
-
-      <Column text='Done'>
-        <Card text='Begin to use static typing' />
-      </Column>
+      {state.lists.map((list, i) => (
+        <Column key={list.id} text={list.text} index={i} />
+      ))}
 
       <AddNewItem toggleButtonText='+ Add another list' onAdd={console.log} />
     </Layout>
